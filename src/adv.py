@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -37,6 +38,10 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player("Jack", room["outside"])
+current = player.current_room
+room_name = current.name
+description = current.description
 
 # Write a loop that:
 #
@@ -48,3 +53,30 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+print(f"You are currently at {room_name}. {description}.")
+
+command = input("Enter a command (n, e, s, w, or q): ")
+while command not in ['q', 'n', 'e', 's', 'w']:
+    print(f"Please enter a valid command (n, e, s, w, or q).")
+    command = input("Enter a command (n, e, s, w, or q): ")
+if (command == 'q'):
+    print(f"Farewell traveler")
+if (command in ['n', 'e', 's', 'w']):
+    print(current.name)
+    dir_attr = f"{command}_to"
+    while hasattr(current, dir_attr):
+        player.current_room = getattr(current, dir_attr)
+        print(f"You are currently at {room_name}. {description}.")
+        command = input("Enter a command (n, e, s, w, or q): ")
+    else:
+        print(f"There is nothing in that direction.")
+        command = input("Enter a command (n, e, s, w, or q): ")
+# else:
+#     print(f"You are currently at {room_name}. {description}.")
+#     command = input("Enter a command (n, e, s, w, or q): ")
+
+# while True:
+#   try:
+#     command = input("Enter a command (n, e, s, w, or q): ")
+#   except
