@@ -78,10 +78,6 @@ while command != 'q':
 if (command == 'q'):
     print(f"Farewell traveler")
 
-# else:
-#     print(f"You are currently at {room_name}. {description}.")
-#     command = input("Enter a command (n, e, s, w, or q): ")
-
 # while True:
 #   try:
 #     command = input("Enter a command (n, e, s, w, or q): ")
