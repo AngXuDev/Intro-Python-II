@@ -53,10 +53,8 @@ room['treasure'].s_to = room['narrow']
 
 player = Player("Jack", room["outside"])
 current = player.current_room
-room_name = current.name
-description = current.description
 
-print(f"You are currently at {room_name}. {description}.")
+print(f"You are currently at {current.name}. {current.description}.")
 
 command = input("Enter a command (n, e, s, w, or q): ")
 
@@ -65,16 +63,13 @@ while command != 'q':
         dir_attr = f"{command}_to"
         if hasattr(current, dir_attr):
             current = getattr(current, dir_attr)
-            room_name = current.name
-            description = current.description
-            print(f"You are currently at {room_name}. {description}.")
-            command = input("Enter a command (n, e, s, w, or q): ")
+            print(
+                f"You are currently at {current.name}. {current.description}.")
         else:
             print(f"There is nothing in that direction.")
-            command = input("Enter a command (n, e, s, w, or q): ")
     else:
         print(f"Please enter a valid command (n, e, s, w, or q).")
-        command = input("Enter a command (n, e, s, w, or q): ")
+    command = input("Enter a command (n, e, s, w, or q): ")
 if (command == 'q'):
     print(f"Farewell traveler")
 
