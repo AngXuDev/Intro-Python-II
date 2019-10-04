@@ -23,9 +23,9 @@ class Room():
         return r
 
     def add_item(self, item):
-        """Adds an item to this Room items list"""
         self.items.append(Item(item[0], item[1]))
 
     def remove_item(self, item):
-        print((ele for ele in self.items if ele.name == item))
-        # self.items.remove(x)
+        for s_item in self.items:
+            if s_item.name == item:
+                self.items.remove(s_item)
