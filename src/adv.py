@@ -52,15 +52,30 @@ room['treasure'].s_to = room['narrow']
 # If the user enters "q", quit the game.
 
 # Create new player
-player = Player("Jack", room["outside"])
+player = Player("Jack", room["outside"], [
+                ("bat", "a baseball bat"), ("hat", "a hat"), ("belt", "a belt")])
 
 # Define current room, initialize empty items list and room items string
 current = player.current_room
 items_list = []
 room_items = ""
+player_items_list = []
+player_items = ""
 
 current.add_item(("ball", "a ball"))
 current.remove_item("pigeon")
+
+# Helper function to update items list for the player and the string to print player items in terminal
+
+
+def playerItems(player):
+    global player_items
+    player_items_list = []
+    player_items = ""
+    for tup in player.items:
+        player_items_list.append(tup.description)
+    player_items = ", ".join(
+        player_items_list[:-1]) + ' and ' + player_items_list[-1]
 
 # Helper function to update items list for a room and the string to print room items in terminal
 
@@ -77,10 +92,11 @@ def updateItems(current):
 
 # Initial update of items in the room
 updateItems(current)
+playerItems(player)
 
 # Initial description of room
 print(
-    f"You are currently at {current.name}. {current.description}. {room_items} is laying around")
+    f"You are currently at {current.name}. {current.description}.\n {room_items} is laying around.\n You are in possession of {player_items}")
 
 # Initial input prompt
 command = input("Enter a command (n, e, s, w, or q): ")
