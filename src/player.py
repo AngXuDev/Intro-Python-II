@@ -20,3 +20,11 @@ class Player():
     def __repr__(self):
         r = f"(Player({repr(self.name)}, {repr(self.current_room)}))"
         return r
+
+    def add_item(self, item):
+        self.items.append(Item(item[0], item[1]))
+
+    def remove_item(self, item):
+        for s_item in self.items:
+            if s_item.description == item:
+                self.items.remove(s_item)

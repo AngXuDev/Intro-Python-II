@@ -63,7 +63,9 @@ player_items_list = []
 player_items = ""
 
 current.add_item(("ball", "a ball"))
-current.remove_item("pigeon")
+current.remove_item("a pigeon")
+player.add_item(("shoes", "a pair of shoes"))
+player.remove_item("a hat")
 
 # Helper function to update items list for the player and the string to print player items in terminal
 
