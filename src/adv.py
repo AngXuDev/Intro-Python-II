@@ -96,7 +96,7 @@ playerItems(player)
 
 # Initial description of room
 print(
-    f"You are currently at {current.name}. {current.description}.\n {room_items} is laying around.\n You are in possession of {player_items}")
+    f"You are currently at {current.name}. {current.description}.\n {room_items} is laying around.\n You are in possession of {player_items}\n")
 
 # Initial input prompt
 command = input("Enter a command (n, e, s, w, or q): ")
@@ -112,7 +112,7 @@ while command != 'q':
             current = getattr(current, dir_attr)
             updateItems(current)
             print(
-                f"You are currently at {current.name}. {current.description}. {room_items} is laying around")
+                f"You are currently at {current.name}. {current.description}.\n {room_items} is laying around.\n You are in possession of {player_items}\n")
         # If route does not exist, print error message
         else:
             print(f"There is nothing in that direction.")
